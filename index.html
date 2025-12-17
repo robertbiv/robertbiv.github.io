@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Robert Bennethum IV | GitHub Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Dynamic GitHub portfolio for Robert Bennethum IV: projects, activity, and contact." />
+  <link rel="icon" type="image/png" href="Robert Bennethum IV Icon.png" />
+  <meta property="og:title" content="Robert Bennethum IV | GitHub Showcase" />
+  <meta property="og:description" content="Found a need. Built a solution. Explore my GitHub projects and work." />
+  <meta property="og:image" content="Robert Bennethum IV Icon.png" />
+  <meta property="og:url" content="https://robertbiv.github.io" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Robert Bennethum IV | GitHub Showcase" />
+  <meta name="twitter:description" content="Found a need. Built a solution. Explore my GitHub projects and work." />
+  <meta name="twitter:image" content="Robert Bennethum IV Icon.png" />
+</head>
+<body>
+  <div class="bg-canvas">
+    <div class="bg-blob blob-a"></div>
+    <div class="bg-blob blob-b"></div>
+    <div class="bg-blob blob-c"></div>
+  </div>
+
+  <header>
+    <div class="shell">
+      <nav class="nav">
+      <button class="brand" id="scrollTop" aria-label="Scroll to top">
+        <img src="Robert Bennethum IV Icon.png" alt="Robert Bennethum IV logo" class="brand__logo" />
+        <div>
+          <p class="brand__eyebrow">GitHub @robertbiv</p>
+          <p class="brand__title">Robert Bennethum IV</p>
+        </div>
+      </button>
+        <button class="nav__toggle ghost" id="menuToggle" aria-expanded="false" aria-controls="navActions" aria-label="Toggle menu">☰</button>
+        <div class="nav__actions" id="navActions">
+        <a class="ghost" href="#stats">Stats</a>
+        <a class="ghost" href="#work">Work</a>
+        <a class="ghost" href="#contact">Contact</a>
+        <button class="btn" id="themeToggle" aria-label="Toggle theme">Light</button>
+      </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero__content">
+        <p class="eyebrow">Live GitHub data</p>
+        <h1 class="headline">
+          Found a Need. Built a Solution.
+        </h1>
+        <p class="lede" id="bio">
+          Loading profile...
+        </p>
+        <div class="hero__cta">
+          <a class="btn" id="githubLink" href="https://github.com/robertbiv" target="_blank" rel="noreferrer">View GitHub</a>
+          <a class="ghost" href="#work">See projects</a>
+        </div>
+        <div class="hero__chips" id="highlightChips"></div>
+      </div>
+      <div class="hero__badge">
+        <div class="badge__inner">
+          <img src="Robert Bennethum IV Icon.png" alt="Robert Bennethum IV logo" class="badge__logo" />
+          <div class="badge__meta">
+            <p class="badge__title" id="name">@robertbiv</p>
+            <p class="badge__sub" id="location" hidden></p>
+            <div id="website"></div>
+          </div>
+        </div>
+        <div class="stat-row" id="statRow">
+          <div class="stat"><span id="repoCount">0</span><label>Repos</label></div>
+          <div class="stat"><span id="followers">0</span><label>Followers</label></div>
+          <div class="stat"><span id="stars">0</span><label>Stars</label></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel shell" id="stats">
+      <div class="panel__header">
+        <div>
+          <h2>Language mix and velocity</h2>
+        </div>
+        <div class="filters">
+          <label class="field">
+            <span>Sort repos</span>
+            <select id="sortSelect">
+              <option value="updated">Recently updated</option>
+              <option value="stars">Most stars</option>
+              <option value="name">Name A-Z</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Filter</span>
+            <input id="searchInput" type="search" placeholder="Search repos" />
+          </label>
+        </div>
+      </div>
+      <div class="lang-grid" id="languageGrid"></div>
+    </section>
+
+    <section class="panel shell" id="work">
+      <div class="panel__header">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2>Featured repositories</h2>
+        </div>
+        <div class="inline">
+          <label class="field">
+            <span>Language</span>
+            <select id="languageSelect">
+              <option value="all">All</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="repo-grid" id="repoGrid"></div>
+      <div class="view-all-container" id="viewAllContainer" hidden>
+        <button class="btn" id="viewAllBtn">View All Repositories</button>
+      </div>
+      <div class="repo-grid loading-grid" id="loadingState">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+      <div class="empty" id="emptyState" hidden>
+        <p>No repositories match that filter yet.</p>
+      </div>
+      <div class="error-state" id="errorState" hidden>
+        <p class="error-state__title">⚠️ Could not load GitHub data</p>
+        <p class="error-state__message">API rate limit reached or network issue. Please try again in a few minutes.</p>
+        <button class="btn" onclick="location.reload()">Retry</button>
+      </div>
+    </section>
+
+    <section class="panel shell" id="contact">
+      <div class="panel__header">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Full contact lives at robertb.me</h2>
+          <p class="lede">Resume, socials, and contact channels are centralized there.</p>
+        </div>
+      </div>
+      <div class="contact">
+        <a class="contact__card" href="https://robertb.me" target="_blank" rel="noreferrer">
+          <span>Portfolio + resume</span>
+          <strong>robertb.me →</strong>
+        </a>
+        <div class="contact__card contact__card--email">
+          <a href="mailto:github@robertb.me" id="emailLink">
+            <span>Email</span>
+            <strong id="emailText">github@robertb.me</strong>
+          </a>
+          <button class="copy-btn ghost" id="copyEmail" aria-label="Copy email">📋</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <p>Built with live GitHub data. <span id="lastUpdated">Updated on page load.</span></p>
+  </footer>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
