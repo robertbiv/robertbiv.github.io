@@ -1,5 +1,5 @@
 const username = "robertbiv";
-const highlightRepos = ["robertbiv.github.io", "sdr-tracker", "aoc-2025"];
+const highlightRepos = ["sdr-tracker", "aoc-2025"];
 const emailOverride = "github@robertb.me";
 
 const els = {
